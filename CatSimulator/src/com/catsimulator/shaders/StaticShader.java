@@ -70,9 +70,9 @@ public class StaticShader extends ShaderController
 		loadVector(location_lightPosition, light.getPosition());
 	}
 	
-	public void loadShineAndReflection(float shine, float reflection)
+	public void loadShineAndReflection(float shine, float reflection) 
 	{
 		loadFloat(location_shine, shine);
-		loadFloat(location_reflection, reflection);
+		loadFloat(location_lightPosition, reflection);
 	}
 }

@@ -11,9 +11,7 @@ import com.catsimulator.model.TexturedModel;
 import com.catsimulator.renderengine.DisplayManager;
 import com.catsimulator.renderengine.ModelLoader;
 import com.catsimulator.renderengine.OBJLoader;
-import com.catsimulator.renderengine.ModelObjectsRenderer;
 import com.catsimulator.renderengine.RenderEngine;
-import com.catsimulator.shaders.StaticShader;
 import com.catsimulator.terrains.Terrain;
 import com.catsimulator.texture.ModelTexture;
 
@@ -61,6 +59,8 @@ public class CatSimulator {
 			renderer.processEntity(entity);
 			renderer.render(camera, light);
 			DisplayManager.updateDisplay();
+			
+			
 		}
 		
 		renderer.clean();
