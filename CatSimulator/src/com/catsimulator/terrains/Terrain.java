@@ -1,14 +1,13 @@
 package com.catsimulator.terrains;
 
 import com.catsimulator.model.Model;
-import com.catsimulator.model.TexturedModel;
 import com.catsimulator.renderengine.ModelLoader;
 import com.catsimulator.texture.ModelTexture;
 
 public class Terrain 
 {
-	private static final float SIZE = 800;
-	private static final int VERTEX_COUNT = 128;
+	private static final float SIZE = 2048;
+	private static final int VERTEX_COUNT = 256;
 	
 	private float x;
 	private float z;
@@ -19,8 +18,8 @@ public class Terrain
 	public Terrain(int gridX, int gridZ, ModelLoader loader, ModelTexture texture)
 	{
 		this.texture = texture;
-		this.x = gridX * SIZE;
-		this.z = gridZ * SIZE;
+		this.x = -SIZE + gridX * SIZE;
+		this.z = -SIZE + gridZ * SIZE;
 		
 		this.model = generateTerrain(loader);
 	}

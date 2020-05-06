@@ -68,7 +68,7 @@ public class OBJLoader
 				else if (line.startsWith("f "))
 				{
 					texturesArray = new float [vertices.size() * 2];
-					normalsArray = new float [normals.size() * 12];
+					normalsArray = new float [normals.size() * 512];
 					break;
 				}
 			}

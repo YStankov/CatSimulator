@@ -24,7 +24,7 @@ public class DisplayManager
 			Display.setDisplayMode(new DisplayMode(WIDTH, HEIGHT));
 			Display.create(new PixelFormat(), attribs);
 			Display.setTitle(DISPLAY_TITLE);
-			Display.setInitialBackground(1, 1, 1);
+			Display.setInitialBackground(0, 20, 0);
 		} catch (LWJGLException e) {
 			e.printStackTrace();
 		}

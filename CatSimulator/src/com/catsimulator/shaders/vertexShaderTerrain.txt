@@ -19,7 +19,7 @@ void main(void)
 {
 	vec4 gameWorldPosition = transformationMatrix * vec4(position,1.0);
 	gl_Position = projectionMatrix * viewMatrix * gameWorldPosition;
-	pass_textureCoords = textureCoords * 40.0;
+	pass_textureCoords = textureCoords * 80.0;
 	
 	normalVector = (transformationMatrix * vec4(normal,0.0)).xyz;
 	lightVector = lightPosition - gameWorldPosition.xyz;

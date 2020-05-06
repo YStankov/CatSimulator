@@ -37,8 +37,8 @@ public class TerrainRenderer
 			
 			GL11.glDrawElements(GL11.GL_TRIANGLES, terrain.getModel().getVertexNumber(), GL11.GL_UNSIGNED_INT, 0);
 			
+			removeTerrainTexturedModel();
 		}
-		removeTerrainTexturedModel();
 	}
 	
 	private void prepateTerrainModel(Terrain terrain)
