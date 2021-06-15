@@ -1,0 +1,52 @@
+#version 400 core
+
+in vec2 pass_textureCoords;
+in vec3 normalVector;
+in vec3 lightVector;
+in vec3 toCameraVector;
+
+out vec4 out_Colour;
+
+uniform sampler2D background;
+uniform sampler2D red;
+uniform sampler2D green;
+uniform sampler2D blue;
+uniform sampler2D blendMap;
+
+uniform vec3 lightColour;
+uniform float shine;
+uniform float reflection;
+
+void main(void)
+{
+	vec4 blendMapColour = texture(blendMap, pass_textureCoords);
+	
+	float backgroundTextureAmount = 1 - (blendMapColour.r + blendMapColour.g + blendMapColour.b);
+	vec2 tiledCoordinates = pass_textureCoords * 40.0;
+	
+	vec4 backgroundColour = texture(background, tiledCoordinates) * backgroundTextureAmount;
+	vec4 redColour = texture(red, tiledCoordinates) * blendMapColour.r;
+	vec4 blueColour = texture(blue, tiledCoordinates) * blendMapColour.b;
+	vec4 greenColour = texture(green, tiledCoordinates) * blendMapColour.g;
+	
+	vec4 fullColour = backgroundColour + redColour + blueColour + greenColour;
+
+	vec3 unitNormal = normalize(normalVector);
+	vec3 unitLight = normalize(lightVector);
+	
+	float dot1 = dot(unitNormal,unitLight);
+	float brightness = max(dot1,0.3);
+	
+	vec3 diffuse = brightness * lightColour;
+	
+	vec3 normVectorToCamera = normalize(toCameraVector);
+	vec3 lightDirection = -unitLight;
+	vec3 reflectedDirection = reflect(lightDirection, unitNormal);
+	float reflectionDotP = dot(reflectedDirection, normVectorToCamera);
+	reflectionDotP = max(reflectionDotP,0.0);
+	
+	float damFactor = pow(reflectionDotP, shine);
+	vec3 prodSpecular = damFactor * reflection * lightColour;
+	
+	out_Colour = vec4(diffuse,1.0) * fullColour + vec4(prodSpecular, 1.0);
+}
