@@ -8,12 +8,15 @@ import catsimulator.renderengine.DisplayManager;
 
 public class Cat extends Entity
 {
+	// How many pixels with a single button press
 	private static final float MOVEMENT_SPEED = 50;
 	
+	// How many pixels with a single button press
 	private static final float TURN_SPEED = 150;
 	
 	private static final float GRAVITY = -30;
 	
+	// How many pixels with a single button press
 	private static final float JUMP_HEIGHT = 10;
 	
 	private static final float TERRAIN_UP_POSITION = 0;

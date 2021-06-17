@@ -29,24 +29,6 @@ public class Camera {
 		calculateCameraPosition(horizontal, vertical);
 		
 		yaw = 180 - (cat.getRoty() + cameraToPlayerAngle);
-//		if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
-//			position.z -= 1.0f;
-//		}
-//		if (Keyboard.isKeyDown(Keyboard.KEY_D)) {
-//			position.x += 1.0f;
-//		}
-//		if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
-//			position.x -= 1.0f;
-//		}
-//		if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
-//			position.z += 1.0f;
-//		}
-//		if (Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
-//			position.y += 0.2f;
-//		}
-//		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
-//			position.y -= 0.2f;
-//		}
 	}
 
 	public Vector3f getPosition() 

@@ -24,29 +24,26 @@ public class CatSimulator {
 	{
 		DisplayManager.createDisplay();
 		ModelLoader loader = new ModelLoader();
-	
-//		Model model = OBJLoader.loadObjModel("catobj", loader);
 		
-//		TexturedModel texturedModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("cat_diff.tga", "TGA")));
-//		ModelTexture texture = texturedModel.getModelTexture();
-//		texture.setShine(4);
-//		texture.setReflection(1);
-		
+		// Create the different terrain textures
 		TerrainTexture backgroundTexture = new TerrainTexture(loader.loadTexture("grass4.jpg", "JPG"));
 		TerrainTexture redTexture = new TerrainTexture(loader.loadTexture("brownstone.jpg", "JPG"));
 		TerrainTexture blueTexture = new TerrainTexture(loader.loadTexture("roadstone.jpg", "JPG"));
 		TerrainTexture greenTexture = new TerrainTexture(loader.loadTexture("flowers.jpg", "JPG"));
 		
+		// Create the terrains object that contains all different terrain textures
 		Terrains terrains = new Terrains(backgroundTexture, 
 										 redTexture, 
 										 greenTexture, 
 										 blueTexture);
-		
+		// Create the blend map terrain texture object (contains black/red/blue/green colours). The blend map determines which terrain should be shown in a given position.
 		TerrainTexture blendMap = new TerrainTexture(loader.loadTexture("blendmap.png", "PNG"));
 		
+		// Create two terrains - actually the game terrain is split in two parts: one start from the left side of the hero and the other on the right side.
 		Terrain terrain = new Terrain(0, 0, loader, terrains, blendMap, "height_map.png");
 		Terrain terrain1 = new Terrain(1, 0, loader, terrains, blendMap, "height_map.png");
 		
+		// Create the different tree models
 		Model treeModel = OBJLoader.loadObjModel("tree", loader);
 		TexturedModel classicTreeTexturedModel = new TexturedModel(treeModel, 
 																   new ModelTexture(loader.loadTexture("classictree.png", "PNG")));
@@ -55,10 +52,12 @@ public class CatSimulator {
 		TexturedModel yellowTreeTexturedModel = new TexturedModel(treeModel, 
 				   												  new ModelTexture(loader.loadTexture("yellowtree.png", "PNG")));
 		
+		// Create the light source
 		Light light = new Light(new Vector3f(3000, 2000, 2000), new Vector3f(1,1,1));
 		
 		RenderEngine renderer = new RenderEngine();
 		
+		// ---- Determines the locations on the map, where the trees are going to be rendered. ---
 		float[] treesX = new float [4096];
 		float[] treesZ = new float [4096];
 		float[] treeSize = new float [4096];
@@ -81,14 +80,19 @@ public class CatSimulator {
 			treeSize[i] = size;
 			
 		}
-				
+	    // ---
+		
+		// Load the cat model
 		Model model = OBJLoader.loadObjModel("catobj", loader);
 		
 		TexturedModel texturedModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("cat_diff.tga", "TGA")));
+		
+		// Create the cat textured model and give it a start location
 		Cat cat = new Cat(texturedModel, new Vector3f(50, 0, -500), 0, 180, 0, 6f);
 		
 		Camera camera = new Camera(cat);
 		
+		// Start the game loop
 		while(!Display.isCloseRequested())
 		{			
 			camera.move();
@@ -100,6 +104,7 @@ public class CatSimulator {
 			renderer.addTerrain(terrain);
 			renderer.addTerrain(terrain1);
 
+			// Render the trees
 			for (int i = 0; i < treesX.length; i++)
 			{
 				if (i <= 300)
@@ -118,6 +123,7 @@ public class CatSimulator {
 					renderer.processEntity(entity);
 				}
 			}
+			// ----
 			
 			renderer.render(camera, light);
 			DisplayManager.updateDisplay();
