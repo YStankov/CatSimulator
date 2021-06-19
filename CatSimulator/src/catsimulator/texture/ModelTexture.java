@@ -1,5 +1,8 @@
 package catsimulator.texture;
 
+/**
+ *  Container class that hold the data for a model texture.
+ */
 public class ModelTexture 
 {
 	private int id;

@@ -6,6 +6,9 @@ import org.lwjgl.util.vector.Vector3f;
 import catsimulator.model.TexturedModel;
 import catsimulator.renderengine.DisplayManager;
 
+/**
+ *  A Cat entity class. Describes the movement of a Cat model.
+ */
 public class Cat extends Entity
 {
 	// How many pixels with a single button press

@@ -4,6 +4,9 @@ import org.lwjgl.util.vector.Vector3f;
 
 import catsimulator.model.TexturedModel;
 
+/**
+ * Container class that keeps the texture, position, scale and rotation values for an entity.
+ */
 public class Entity 
 {
 	private TexturedModel texturedModel;

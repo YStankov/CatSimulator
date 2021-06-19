@@ -17,6 +17,10 @@ import catsimulator.shaders.StaticShader;
 import catsimulator.shaders.TerrainShader;
 import catsimulator.terrains.Terrain;
 
+
+/**
+ * This class is responsible for rendering models on the screen.
+ */
 public class RenderEngine 
 {
 	private static final float FIELD_OF_VIEW = 70;
@@ -47,6 +51,10 @@ public class RenderEngine
 		terrainRenderer = new TerrainRenderer(terrainShader, projectionMatrix);
 	}
 	
+	
+	/**
+	 * Renders a model to the screen.
+	 */
 	public void render(Camera camera, Light light)
 	{
 		prepare();
@@ -67,6 +75,12 @@ public class RenderEngine
 		entities.clear();
 	}
 	
+	
+	/**
+	 * Adds terrain to the list of terrains to render.
+	 * 
+	 * @param terrain - the terrain entity
+	 */
 	public void addTerrain(Terrain terrain)
 	{
 		terrains.add(terrain);
@@ -96,6 +110,9 @@ public class RenderEngine
 	}
 	
 	
+	/**
+	 * Cleans up the screen from everything that was rendered last frame. Needs to be called before each frame.
+	 */
 	private void prepare()
 	{
 		GL11.glEnable(GL11.GL_DEPTH_TEST);

@@ -18,6 +18,7 @@ import catsimulator.texture.ModelTexture;
 import catsimulator.texture.TerrainTexture;
 import catsimulator.texture.Terrains;
 
+// The main game class
 public class CatSimulator {
 
 	public static void main(String[] args) 
@@ -92,19 +93,22 @@ public class CatSimulator {
 		
 		Camera camera = new Camera(cat);
 		
-		// Start the game loop
+		// Start the main game loop
 		while(!Display.isCloseRequested())
-		{			
+		{
+			// calculates the camera position
 			camera.move();
 			
+			// calculates the cat position and orientation
 			cat.move();
 			
 			renderer.processEntity(cat);
 			
+			// render the terrain
 			renderer.addTerrain(terrain);
 			renderer.addTerrain(terrain1);
 
-			// Render the trees
+			// Render the trees - since we have tree different type of trees, they'll be rendered on a "random"
 			for (int i = 0; i < treesX.length; i++)
 			{
 				if (i <= 300)
@@ -129,8 +133,11 @@ public class CatSimulator {
 			DisplayManager.updateDisplay();
 		}
 		
+		// on game exit, clean all rendered entities
 		renderer.clean();
 		loader.cleanUp();
+		
+		// close the display
 		DisplayManager.closeDisplay();
 	}
 }

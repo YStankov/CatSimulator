@@ -1,5 +1,8 @@
 package catsimulator.model;
 
+/**
+ * Container class for the model data.
+ */
 public class ModelData {
 	 
     private float[] vertices;

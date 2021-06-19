@@ -2,9 +2,14 @@ package catsimulator.entities;
 
 import org.lwjgl.util.vector.Vector3f;
 
+/**
+ * Container class that keeps the values for the light source position and colour
+ */
 public class Light {
+	// A 3D vector that contains the light source position coordinates
 	private Vector3f position;
 
+	// A 3D vector that contains the light source colour
 	private Vector3f colour;
 
 	public Light(Vector3f position, Vector3f colour) {

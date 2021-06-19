@@ -2,6 +2,9 @@ package catsimulator.model;
 
 import org.lwjgl.util.vector.Vector3f;
 
+/**
+ * Container class that holds the data that describes a vertex.
+ */
 public class Vertex {
     
     private static final int NO_INDEX = -1;

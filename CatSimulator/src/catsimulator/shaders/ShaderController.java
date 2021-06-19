@@ -11,6 +11,9 @@ import org.lwjgl.opengl.GL20;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
 
+/**
+ * Abstract shader program class. 
+ */
 public abstract class ShaderController 
 {
 	private int controllerId;
@@ -103,6 +106,9 @@ public abstract class ShaderController
 		GL20.glBindAttribLocation(controllerId, attribute, variableName);
 	}
 	
+	/**
+	 * Loads a shader from a file.
+	 */
 	private static int loadShader(String file, int type)
 	{
 		StringBuilder shaderSource = new StringBuilder();

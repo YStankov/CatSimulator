@@ -2,6 +2,9 @@ package catsimulator.model;
 
 import catsimulator.texture.ModelTexture;
 
+/**
+ * This class represents a model with a texture (a textured model). Keeps a model and a model texture objects.
+ */
 public class TexturedModel 
 {
 	private Model model;

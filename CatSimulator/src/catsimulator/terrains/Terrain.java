@@ -11,6 +11,9 @@ import catsimulator.renderengine.ModelLoader;
 import catsimulator.texture.TerrainTexture;
 import catsimulator.texture.Terrains;
 
+/**
+ * This class is responsible for generating a terrain model and keeps its data.
+ */
 public class Terrain 
 {
 	private static final float SIZE = 2048;
